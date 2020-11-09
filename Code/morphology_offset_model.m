@@ -2,7 +2,7 @@
 
 
 % load FmON network soma positions
-load([SAM_RESEARCH 'datasets/cellLocationsTable.mat'])
+load('cellLocationsTable.mat')
 sel = contains(cellstr(cellLocationsTable.injectedSomaType), 'on');
 cellLocationsTable = cellLocationsTable(sel,:);
 
@@ -35,7 +35,7 @@ end
 
 
 %% load dendrite polygons
-load([SAM_RESEARCH 'datasets/dendritePolygonDatabase.mat'])
+load('dendritePolygonDatabase.mat')
 dendritePolygonDatabase_local = dendritePolygonDatabase;
 
 % pre-process dendrite polygons
@@ -247,16 +247,16 @@ line([0,0] + cent(1),[-l,l] + cent(2),'Color',[1,0,1])
 
 
 %% igor export map
-outStruct = struct();
-outStruct.X = X;
-outStruct.model_rfMapTogether = rfMapTogether;
-
-fname = 'igorExport/model_rf_map.h5';
-dataLabel = sprintf('model_rfMapTogether');
-
-try
-    exportStructToHDF5(outStruct, fname, dataLabel)  
-    disp('file written')
-catch
-    warning('no write')
-end
+% outStruct = struct();
+% outStruct.X = X;
+% outStruct.model_rfMapTogether = rfMapTogether;
+% 
+% fname = 'igorExport/model_rf_map.h5';
+% dataLabel = sprintf('model_rfMapTogether');
+% 
+% try
+%     exportStructToHDF5(outStruct, fname, dataLabel)  
+%     disp('file written')
+% catch
+%     warning('no write')
+% end
